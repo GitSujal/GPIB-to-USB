@@ -1,0 +1,266 @@
+\title{GPIB to USB}
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics[width=50mm]{tu.jpg} % Include a department/university logo - this will require the graphicx package
+ 
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Tribhuwan University}\\[1.5cm] % Name of your university/college
+\textsc{\Large Instrumentation II}\\[0.5cm] % Major heading such as course name
+\textsc{\large Hardware Project Report}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.2cm]
+{ \huge \bfseries GPIB TO USB}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+%\begin{minipage}{0.4\textwidth}
+%\begin{flushleft} \large
+%\emph{Author:}\\
+%Sujit \textsc{Maharjan} \\
+%Shishir \textsc{Aditya Gautam} \\
+%Shreya \textsc{Agarwal} % Your name
+%\end{flushleft}
+%\end{minipage}
+~
+%\begin{minipage}{0.4\textwidth}
+%\begin{flushright} \large
+%\emph{Supervisor:} \\
+%Dr. James \textsc{Smith} % Supervisor's Name
+%\end{flushright}
+%\end{minipage}\\[2cm]
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Author:}\\
+Sujit \textsc{Maharjan} (070BEX443) \\
+Sujal \textsc{Dhungana} (070BEX442)\\
+Shreya \textsc{Agarwal} (070BEX441)\\
+Sujita \textsc{Chaudhary} (070BEX444)\\[1cm]
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \today}\\[1cm] % Date, change the \today to a set date if you want to be precise
+
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+\section{Acknowledgement //TODO}
+
+First and foremost, we would like express our gratitude to the IOE (Institute Of Engineering), Central Campus Pulchowk, Department of Electronics and Computer Engineering for the wonderful opportunity to explore the wonderful field of automation and circuit design. The corporation and the support provided by the campus has been fruitful for the successful completion of the case study.
+\par
+We would also like to extend our gratitude to Dr. Rabindra Prasad Dhakal, Head of Department and . It's due to his effort to share his knowledge on the subject matter of Bio-Diseal which enabled us to take our first starting step on this Case study. We would also like to thank  Mr. Sumit Maharjan who is currently doing his Masters in Natural Language Programming in Tohokyo University, Sendai, Japan for his guidance in using LaTeX.\par
+We are also grateful to many hard working people who have provided us with software resources like latex, emacs, google drives/docs, git which enhanced our teams ability to collaborate and create this report with ease which we would not feel with the lack of any of these technologies.
+\par
+Also extending the thanks to our friends who have heartily involved in any discussion sharing ideas and help whenever possible.
+
+\newpage
+
+
+
+\tableofcontents
+\newpage
+\renewcommand{\thesection}{\arabic{section}} 
+\section{Introduction}
+\subsection{Industry background}
+Nepal Academy of Science and Technology (NAST) is an autonomous apex body established in 1982 to promote science and technology in the country. The Academy is entrusted with four major objectives: advancement of science and technology for all-round development of the nation; preservation and further modernization of indigenous technologies; promotion of research in science and technology; and identification and facilitation of appropriate technology transfer.
+\subsection{Relevancy of the visited industrial plant to the course    “Instrumentation- II” }
+Instrumentation II is the continuation of INSTRUMENTATION I with emphasis on advance system design and case studies.It introduces and applies the knowledge of microprocessor, A/D , D/A converter to design Instrumentation system. It also teaches us the concept on interfacing with microprocessor based system and circuit design techniques.This is facilitate by the case study that gives us the oppurtunity to view the real world uses of the microprocessor based system read in the course.We choose Bio-Diseal Plant under Bio-Energy Department of NAST for our study to analyse the how various microprocessor based system can help in the working of plant.
+
+
+\subsection{ Scope and limitation of the case-study}
+There were various limitations during our case study.
+ It was mainly due to lack of time and lack of our knowledge about practical systems which prevented us to study the systems deeply.
+Regardless of these limitations, We have tried our best to analyse these current systems and propose a new automated system.
+Therefore, We may say that all of the systems provided by this report might not be feasible in real life. 
+We can alo say that this gives us the scope of the systems to be more improved.
+
+\newpage
+
+\section{Objective}
+\begin{itemize}
+\item To visit the chosen organization and learn its operation under supervision of senior engineers and technicians. 
+\item To learn how MBI systems can be implemented in the automation process.
+\item To compare the existing manuals systems against automatic machines.
+\item To point out the sections where a new design could have been implemented causing an increase in efficiency and reduction of man power required. 
+\item To propose new automated systems wherever applicable.
+\item To check if our new design is within the feasible budget and it really can benefit the industry if implemented
+\end{itemize}
+\newpage
+\section{Existing System}
+\subsection{Details of each PLant/Process}
+\begin{itemize}
+\item Pre-Processing \par
+FFA (Free Fatty Acid) of Raw Materials is calculated before proceeding further to any plant. It is calculated by process of sampling.
+\item Plant 1:Pre-Treatment\par
+By this process, the value of FFA (Free Fatty Acid) is decreased.This process consist of heat and acidic treatment . 
+\begin{itemize}
+\item Requirements / Conditions for Reaction
+\begin{itemize}
+\item Temperature Range:65
+\item Stirring Required:yes(700rpm)
+\item Vaccum Required:no
+\end{itemize}
+\item Quality And Quantity of Catalyst\par
+No catalyst required 
+\item Conditions for completion of process\par
+\begin{itemize}
+\item Time parameter:(numerical factor*weight*raw-material source)about 1hr.\par
+(confidence level: 90 \%) 
+\item Change in PH:6.5-7.0\par
+(confidence level: 95 \%)
+\end{itemize}
+\end{itemize}
+\item Plant 2:Main Reactor\par
+This plant in similar to pre-treatment. The only difference is this process use catalyst and have different timing.
+\begin{itemize}
+\item Requirements / Conditions for Reaction
+\begin{itemize}
+\item Temperature Range:65
+\item Stirring Required:yes(700rpm)
+\item Vaccum Required:no
+\end{itemize}
+\item Quality And Quantity of Catalyst\par
+catalyst required according to raw material 
+\item Conditions for completion of process\par
+\begin{itemize}
+\item Time parameter:(numerical factor*weight*raw-material source)about 2hr.\par
+(confidence level: 90 \%) 
+\end{itemize}
+\end{itemize}
+\item Plant 3:Phase Seperation\par
+This process include sedimentation and centrifugation of the two layers which will get formed in the previous step.After this the layers(i.e. aquous and organic solution) are completely seperated. The aquous solution is discarded where as the organic solution is taken forward for purification.
+
+\item Plant 4:Purification\par
+In this process, The organic solution (Raw Bio-Diseal) is converted into pu bio-diseal which could be used in diseal engines.
+
+
+\end {itemize}
+\subsection{Process involved}
+\subsection{Block Diagram}
+\subsection{Limitations of Existing system}
+\newpage
+\section{Proposed MBI system for the plant}
+\subsection{System Requirement}
+\subsection{Device used}
+\subsection{Flow Chart}
+\subsection{Block Diagram including Circuit diagrams}
+\subsection{Advantages and Disadvantages}
+
+\newpage
+
+
+\section{Estimated cost for introducing the proposed MBI system}
+The estimated cost for implementing our proposed MBI system is based
+upon various factors namely.
+\begin{itemize}
+\item Cost of components
+\item Cost of Engineer time
+\item Cost of Software Production
+\item Cost of manufacturing hardware
+\item Cost of Maintenance
+\item Cost of Transportation and other overhead
+\end{itemize}
+\subsection{Detailed cost break down of components }
+\begin{table}
+\begin{tabular}{|c|c|c|}
+\hline
+%Component & Specificity & Qty & Cost \\
+\hline
+\end{tabular}
+\end{table}
+\subsection{Engineer Time}
+4 engineers will be working for whole year, as per their qualification, thus:
+\[4(engineers)*salary per month(30,000)*12(months)=Rs.14,40,000 \]
+\subsection{Software Production}
+\subsection{Hardware Production}
+The total cost of assembling total hardware amounts to 1,00,000 Rs
+\subsection{Maintenance}
+The maintenance cost will be charged after the installing on monthly basis,
+with Rs. 100,000 per month for only service.Extra cost not included.
+\subsection{Transportation and Overhead}
+Various overheads like communication, Meeting Lunch, Meeting Transportation etc should
+be beared by the company, which amounts to Rs. 1,00,000 for whole year.
+\subsection{Total Estimated Cost}
+\begin{table}
+\begin{tabular}{|c|c|c|}
+\hline
+Sn. & Topic & Cost \\
+\hline
+1. & Cost of Components & \\
+2. & Cost of Engineer time & Rs. 14,40,000\\
+3. & Cost of Software Production & \\
+4. & Cost of manufacturing hardware & Rs. 1,00,000\\
+5. & Cost of Maintenance & Rs.1,00,000\\
+6. & Cost of Transportation and other overhead & Rs. 1,00,000\\
+7. & Total: & \\
+\hline
+\end{tabular}
+\end{table}
+Thus , The tentative cost is about
+\newpage
+
+\section{Estimated Timeline for project completion}
+We have estimated about a year's worth of work to implement the final product.
+They are categorized in to 4 main sections:
+\begin{itemize}
+\item Research and Analysis Phase
+\item Design and Implementation Phase
+\item Installation Phase
+\item Debugging and Re-evaluation
+\end{itemize} 
+\subsection{Research and Analysis}
+In this phase, We go over the field visit gain understanding of the current system and recommend a new system.
+Throughout this process, We have to go over different sources and build an idea of how improved system should be like.\par
+Estimated Time: 3 months
+\subsection{Design and Implementation}
+After thorough understanding of the system, we set out to design the proposed system.
+We do the designing of hardware and software in parallel.
+After both are ready, We integrate them and debugging to make the final product.\par
+Estimated Time: 4 months
+\subsection{Installation}
+We apply our finished system to the field.
+We do the required fitting and calliberating the system to the optimum state.
+Then after we observe the operation and test if it is working.
+After the system is ready, We train the employees on how to use the system in effective way.\par
+Estimated time: 4 months
+\subsection{Revaluation}
+After the system is running for some time, We again need to re-evaluate and consider some improvements based upon the feedback of the user. We get the feedback and do the necessary improvements based upon the feedback of the user. We get the feedback and do the necessary improvements and make the system full functional.\par
+Estimated Time:2 Months
+
+\subsection{Gantt Chart}
+
+\newpage
+
+\end{document}
