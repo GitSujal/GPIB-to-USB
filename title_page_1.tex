@@ -220,7 +220,7 @@ Initially PCBs were designed manually by creating a photomask on a clear mylar s
 \item Signal traces are routed. Electronic design automation tools usually create clearances and connections in power and ground planes automatically.
 \item Gerber files are generated for manufacturing.
 \end{itemize}
-
+\newpage
 \section{Design Approach}
 The schematic capture part of the design process is today undertaken interactively. Prior to the schematic capture of the design, the initial high level design must be undertaken. Then in years gone by, breadboards of the circuit would be made up and made to work before committing to the schematic stage. Now with highly sophisticated circuit simulation software, the circuit is designed interactively during the schematic capture stage and the circuit simulated using software rather than building a hardware version of the circuit.\par 
 By using a computer based system for schematic capture, it is possible to enter very complicated circuits into a computer relatively quickly. It is also possible to undertake the design of the board and perform circuit simulations while the basic design is underway. In addition to this, many circuit capture systems provide a means by which the circuit revisions can be managed and configuration controlled properly. Where a circuit is being repeatedly updated, and there may be the possibility of several people working on different areas, this is of great importance. Realizing the importance of computer simulated circuit, we designed the circuit in Ki cad which effectively improved our throughput. \par 
@@ -257,7 +257,7 @@ PCB layout and design should be a relatively straightforward process in terms of
 \newpage
 
 \section{Circuit schematic design}
-
+\newpage
 \section{Software Design Process}
 The software is the crucial part of the project which denotes how the hardware operates. The use of software allows the hardware to be given instruction much faster than the user can and make the hardware efficient. This was the reason behind the genesis of the stored software concept.
 
@@ -268,11 +268,72 @@ The interrupt service routine then sends the data to transmitter of usart. Thus 
 
 The computer detects the hardware as a serial port. The protocol of the data that the Oscillator is sending must be handled by the software in the computer itself. This makes the hardware much more flexible. This also allows the driver to be not limited to an particular operating system.
 
+The program hp2xx reads either directly from the device or from the data piped to a file to preview the required image of the graph.
+
 \newpage
-\section{Software code}
+\section{Component Layout}
+\begin{tabular}{|c|c|c|}
+\hline
+S.N	& Components &	Units\\
+\hline
+1 & Ceramic capacitance – 22 pF	&2\\
+2	&Electrolytic Capacitance – 10 µF&	2\\
+3	&LED – 5mm	&3\\
+4	&ATMEGA-32	&1\\
+5	&\(DIP-40_600\) (IC holder)&	1\\
+6&	Pin array 3x1	&3\\
+7&	Pin array 4x1	&3\\
+8&	Pin array 3x2	&1\\
+9	&Pin array 4x2	&1\\
+10	&Resistance 220	&4\\
+11	&Resistance 10k	&10\\
+12&	SPST switch	&1\\
+13&	Crystal 16MHz	&1\\
+14& Zener diode 3.9V &               2\\
+15& Resistance 56     &                           2\\
+16& Resistance 1M      &                  1\\
+17& Resistance 1.5k     &    1\\
+18 &7805&     1\\
+\hline
+
+\end{tabular}
+\newpage
+\section{PCB Layout}
+\begin{figure}[!h]
+\includegraphics[width=5.5in]{pcblayout}
+\centering
+\caption{PCB Layout}
+\end{figure}
+\newpage
+
+\section{Software code}https://preview.overleaf.com/public/fbkkzpgpwydn/images/396206acd4e657e09f215f74f1a2a40e1b272ae1.jpeg
 
 \lstinputlisting{code.txt}
-
 \newpage
+\section{Circuit Explanation}
+The major components in the circuit are:
+\begin{itemize}
+
+
+\item 	Reset - A SPST switch is used to generate reset signal in the AVR. It is connected to a pull up resistor, when reset is asserted, this pin is set low and reset signal is generated.
+\item	Programmer circuit – ATMEGA-32 requires 6 pins for flashing new hex code, they are located from pin6 to pin 11 which are MOSI, MISO, SCK, RESET, VCC, GROUND. Male headers are soldered accordingly in the PCB.
+\item	Crystal – An external crystal of 16 MHz is used to improve accuracy and provide greater baud rate capabilities. Fuse bits are burned appropriately to let the micro-controller use the external crystal.
+\item	Data lines – 8 data lines are connected .
+\item	Handshake signals – Handshake signals are connected . 
+\item	External power supply – An external power supply circuit is made. It consists of a 5V dc supply, 7805 voltage regulator and two 10 micro-farad electrolytic capacitors.
+\item	Serial interface- A serial interface connecting RX and TX pin of AVR is made. 
+\end{itemize}
+\newpage
+\section{Conclusion}
+In the process of this project on GPIB to USB interface, we learnt about interfacing, PCB designing, parallel and serial connectors, using microcontrollers and programming languages.\par 
+We were able to do this project using simulation and various electronic tools. We learnt designing of electronic circuits on a PCB. All we did was data transfer from a function generator to a visual display unit
+
+\section{Reference}
+ \begin{enumerate}
+\item KiCad, E. D. A. "Software Suite." (2012).
+\item GPIB tutorial” Web. http://www.hit.bme.hu/~papay/edu/GPIB/tutor.htm
+\item http://g2pc1.bu.edu/~qzpeng/gpib/manual/GpibProgTut.pdf
+\item https://www.gnu.org/software/hp2xx/
+\end{enumerate}
 
 \end{document}
